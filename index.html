@@ -126,12 +126,39 @@
         align-items: center;
     }
     #doc .d_l:hover .n_l{
-        color: rgba(0,0,0,3);
+        color: rgba(0,0,0,1);
+    }
+    #doc #divToString{
+        position: fixed;
+        cursor: pointer;
+        top: 20px;
+        left: -160px;
+        border-radius: 4px;
+        background-color: white;
+        width: 190px;
+        font-size: 1em;
+        transition: 300ms;
+    }
+    #doc #inputToString{
+        width: 150px;
+        background-color: white;
+        font-size: 1em;
+    }
+    #doc #inputToStringBotton{
+        cursor: pointer;
+        padding: 2px 5px 4px;
+        border-radius: 20%;
+        background-color: orange;
+        transition: 300ms;
+        color:white;
+        font-weight: 700;
+    }
+    .black{
+        color: rgba(0,0,0,1);
     }
     </style>
 </head>
 <body>
-
 <div id="ww">
     <div id="doc">
         <div class="d_l">
@@ -12159,7 +12186,44 @@
             <div class="dlc"><div class="n_l"><div class="s_n" id="str_id_2444">2444</div></div>
                 Абакан: Хакасское книжное издательство, 2009.-104с.</div>
         </div>
+        <div id="divToString">
+            <input id="inputToString" value="" type="number" min="1" max="2444" step="1" size="4" placeholder="к строке №" />
+            <span id="inputToStringBotton">></span>
+        </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+    var inputToStringFlag = false;
+    var divToString = $("#divToString");
+    $("#inputToStringBotton").click(function () {
+        if(inputToStringFlag){
+            $(this).html(">");
+            divToString.css({
+                "left": "-160px"
+            });
+            inputToStringFlag = false;
+        }else{
+            $(this).html("<");
+            divToString.css({
+                "left": "10px"
+            });
+            inputToStringFlag = true;
+        }
+
+    });
+    var last_str = false;
+    $("#inputToString").change(function() {
+        $('html, body').animate({
+            scrollTop: $("#str_id_" + $(this).val()).offset().top - 200
+        }, 300);
+        if(last_str){
+            last_str.removeClass("black");
+        }
+        last_str = $("#str_id_" + $(this).val());
+        last_str.addClass("black");
+    });
+</script>
 </body>
 </html>
