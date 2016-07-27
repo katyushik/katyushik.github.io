@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <title>katyushik</title>
+    <meta name="description" content="Гравитационное взаимодействие, основы космологии. г. Абакан Катющик Виктор Григорьевич">
+    <meta name="keywords" content="гравитация пространство космос вселенная непрерывность искривление время поле нло технолоия адекватность реальность факт физика катющик">
+    <meta name="robots" content="index,follow">
     <style>[get-popover] > [popover] {
         opacity: 0.001;
     }
@@ -12249,7 +12252,7 @@
 
     if(start){
         goToObj($("#" + start));
-        if(end && (start < end)){
+        if(end && (start <= end)){
            var fragment = $("#" + (start - 1)).parent(".n_l").parent(".dlc").parent(".d_l").nextUntil($("#" + (end + 1)).parent(".n_l").parent(".dlc").parent(".d_l"));
             var wrapper = $("<div class='start_fragment'></div>");
             fragment.wrapAll(wrapper);
